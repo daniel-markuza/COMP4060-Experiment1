@@ -7,7 +7,6 @@
       <logicalFolder name="f1" displayName="click_routines" projectFiles="true">
         <logicalFolder name="f1" displayName="usb_uart" projectFiles="true">
           <itemPath>../src/click_routines/usb_uart/usb_uart.h</itemPath>
-          <itemPath>../src/click_routines/usb_uart/usb_uart_example.h</itemPath>
         </logicalFolder>
         <itemPath>../src/click_routines/click_interface.h</itemPath>
       </logicalFolder>
@@ -175,6 +174,7 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
+      <itemPath>../src/example.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -198,7 +198,8 @@
       <logicalFolder name="f1" displayName="click_routines" projectFiles="true">
         <logicalFolder name="f1" displayName="usb_uart" projectFiles="true">
           <itemPath>../src/click_routines/usb_uart/usb_uart.c</itemPath>
-          <itemPath>../src/click_routines/usb_uart/usb_uart_example.c</itemPath>
+          <itemPath>../src/coordinator.h</itemPath>
+          <itemPath>../src/coordinator.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="config" projectFiles="true">
@@ -241,6 +242,7 @@
       </logicalFolder>
       <itemPath>../src/main_sam_e51_cnano.c</itemPath>
       <itemPath>../src/config/sam_e51_cnano/pin_configurations.csv</itemPath>
+      <itemPath>../src/example.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -260,8 +262,8 @@
         <platform>4</platform>
       </toolsSet>
       <packs>
-        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
         <pack name="SAME51_DFP" vendor="Microchip" version="3.6.130"/>
+        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -989,7 +991,7 @@
         <property key="communication.speed" value="2.000"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
@@ -1048,7 +1050,7 @@
         <property key="communication.speed" value="2.000"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>

@@ -45,11 +45,12 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "definitions.h"                // SYS function prototypes
-#include "click_routines/usb_uart/usb_uart_example.h"
+#include <stddef.h>      // Defines NULL
+#include <stdbool.h>     // Defines true
+#include <stdlib.h>      // Defines EXIT_FAILURE
+#include "definitions.h" // SYS function prototypes
+#include "coordinator.h"
+#include "example.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -57,24 +58,22 @@
 // *****************************************************************************
 // *****************************************************************************
 
-int main ( void )
+int main(void)
 {
-    /* Initialize all modules */
-    SYS_Initialize ( NULL );
+  /* Initialize all modules */
+  SYS_Initialize(NULL);
 
-    usb_uart_example();
-    while ( true )
-    {
-        ;
-    }
+  coordinator_main();
+  while (true)
+  {
+    ;
+  }
 
-    /* Execution should not come here during normal operation */
+  /* Execution should not come here during normal operation */
 
-    return ( EXIT_FAILURE );
+  return (EXIT_FAILURE);
 }
-
 
 /*******************************************************************************
  End of File
 */
-

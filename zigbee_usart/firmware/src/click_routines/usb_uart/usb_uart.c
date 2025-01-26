@@ -16,7 +16,7 @@
 
   Remarks:
     None.
- 
+
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -48,30 +48,34 @@
  */
 
 #include <string.h>
-#include "definitions.h"                // SYS function prototypes
+#include "definitions.h" // SYS function prototypes
 #include "../click_interface.h"
 #include "usb_uart.h"
 
-bool usb_uart_USART_Read(uint8_t* pRdBuffer, const size_t size)
+bool usb_uart_USART_Read(uint8_t *pRdBuffer, const size_t size)
 {
-    return CLICK_USB_UART_USART_Read(pRdBuffer,size);
+  return CLICK_USB_UART_USART_Read(pRdBuffer, size);
+}
+bool usb_uart_USART_Write(uint8_t *pWrBuffer, const size_t size)
+{
+  return CLICK_USB_UART_USART_Write(pWrBuffer, size);
 }
 
-bool usb_uart_USART_Write(uint8_t* pWrBuffer, const size_t size)
+size_t usb_uart_USART_ReadCountGet(void)
 {
-    return CLICK_USB_UART_USART_Write(pWrBuffer, size);
+  return CLICK_USB_UART_USART_ReadCountGet();
+}
+size_t usb_uart_USART_WriteCountGet(void)
+{
+  return CLICK_USB_UART_USART_WriteCountGet();
 }
 
 bool usb_uart_USART_ReadIsBusy(void)
 {
-    return CLICK_USB_UART_USART_ReadIsBusy();
+  return CLICK_USB_UART_USART_ReadIsBusy();
 }
 
 bool usb_uart_USART_WriteIsBusy(void)
 {
-    return CLICK_USB_UART_USART_WriteIsBusy();
+  return CLICK_USB_UART_USART_WriteIsBusy();
 }
-
-
-
-

@@ -15,7 +15,7 @@
     PLIB APIs.
 
   Remarks:
-    None. 
+    None.
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -63,9 +63,11 @@
  */
 
 // SERCOM USART Definitions
-#define CLICK_USB_UART_USART_Read                          SERCOM4_USART_Read
-#define CLICK_USB_UART_USART_Write                         SERCOM4_USART_Write
-#define CLICK_USB_UART_USART_ReadIsBusy                    SERCOM4_USART_ReadIsBusy
-#define CLICK_USB_UART_USART_WriteIsBusy                   SERCOM4_USART_WriteIsBusy
+#define CLICK_USB_UART_USART_Read SERCOM4_USART_Read
+#define CLICK_USB_UART_USART_Write SERCOM4_USART_Write
+#define CLICK_USB_UART_USART_ReadCountGet SERCOM4_USART_ReadCountGet
+#define CLICK_USB_UART_USART_WriteCountGet SERCOM4_USART_WriteCountGet
+#define CLICK_USB_UART_USART_ReadIsBusy SERCOM4_USART_ReadIsBusy
+#define CLICK_USB_UART_USART_WriteIsBusy SERCOM4_USART_WriteIsBusy
 
 #endif // _CLICK_INTERFACE_H

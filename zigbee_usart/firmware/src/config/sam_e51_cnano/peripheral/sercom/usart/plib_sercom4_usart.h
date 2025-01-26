@@ -20,27 +20,27 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*******************************************************************************/
+ * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+ *
+ * Subject to your compliance with these terms, you may use Microchip software
+ * and any derivatives exclusively with Microchip products. It is your
+ * responsibility to comply with third party license terms applicable to your
+ * use of third party software (including open source software) that may
+ * accompany Microchip software.
+ *
+ * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+ * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+ * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+ * PARTICULAR PURPOSE.
+ *
+ * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+ * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+ * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+ * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+ * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+ * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+ * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ *******************************************************************************/
 
 #ifndef PLIB_SERCOM4_USART_H // Guards against multiple inclusion
 #define PLIB_SERCOM4_USART_H
@@ -56,65 +56,63 @@
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus // Provide C++ Compatibility
 
-    extern "C" {
+extern "C"
+{
 
 #endif
-// DOM-IGNORE-END
+  // DOM-IGNORE-END
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Interface Routines
-// *****************************************************************************
-// *****************************************************************************
+  // *****************************************************************************
+  // *****************************************************************************
+  // Section: Interface Routines
+  // *****************************************************************************
+  // *****************************************************************************
 
-void SERCOM4_USART_Initialize( void );
+  void SERCOM4_USART_Initialize(void);
 
-bool SERCOM4_USART_SerialSetup( USART_SERIAL_SETUP * serialSetup, uint32_t clkFrequency );
+  bool SERCOM4_USART_SerialSetup(USART_SERIAL_SETUP *serialSetup, uint32_t clkFrequency);
 
-void SERCOM4_USART_Enable( void );
+  void SERCOM4_USART_Enable(void);
 
-void SERCOM4_USART_Disable( void );
+  void SERCOM4_USART_Disable(void);
 
-void SERCOM4_USART_TransmitterEnable( void );
+  void SERCOM4_USART_TransmitterEnable(void);
 
-void SERCOM4_USART_TransmitterDisable( void );
+  void SERCOM4_USART_TransmitterDisable(void);
 
-bool SERCOM4_USART_Write( void *buffer, const size_t size );
+  bool SERCOM4_USART_Write(void *buffer, const size_t size);
 
-bool SERCOM4_USART_TransmitComplete( void );
+  bool SERCOM4_USART_TransmitComplete(void);
 
+  bool SERCOM4_USART_WriteIsBusy(void);
 
-bool SERCOM4_USART_WriteIsBusy( void );
+  size_t SERCOM4_USART_WriteCountGet(void);
 
-size_t SERCOM4_USART_WriteCountGet( void );
+  void SERCOM4_USART_WriteCallbackRegister(SERCOM_USART_CALLBACK callback, uintptr_t context);
 
-void SERCOM4_USART_WriteCallbackRegister( SERCOM_USART_CALLBACK callback, uintptr_t context );
+  void SERCOM4_USART_ReceiverEnable(void);
 
+  void SERCOM4_USART_ReceiverDisable(void);
 
-void SERCOM4_USART_ReceiverEnable( void );
+  bool SERCOM4_USART_Read(void *buffer, const size_t size);
 
-void SERCOM4_USART_ReceiverDisable( void );
+  bool SERCOM4_USART_ReadIsBusy(void);
 
-bool SERCOM4_USART_Read( void *buffer, const size_t size );
+  size_t SERCOM4_USART_ReadCountGet(void);
 
-bool SERCOM4_USART_ReadIsBusy( void );
+  bool SERCOM4_USART_ReadAbort(void);
 
-size_t SERCOM4_USART_ReadCountGet( void );
+  void SERCOM4_USART_ReadCallbackRegister(SERCOM_USART_CALLBACK callback, uintptr_t context);
 
-bool SERCOM4_USART_ReadAbort(void);
+  USART_ERROR SERCOM4_USART_ErrorGet(void);
 
-void SERCOM4_USART_ReadCallbackRegister( SERCOM_USART_CALLBACK callback, uintptr_t context );
-
-USART_ERROR SERCOM4_USART_ErrorGet( void );
-
-uint32_t SERCOM4_USART_FrequencyGet( void );
+  uint32_t SERCOM4_USART_FrequencyGet(void);
 
 // DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-    }
+#ifdef __cplusplus // Provide C++ Compatibility
+}
 
 #endif
 // DOM-IGNORE-END
 
-#endif //PLIB_SERCOM4_USART_H
+#endif // PLIB_SERCOM4_USART_H

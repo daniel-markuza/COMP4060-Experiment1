@@ -16,7 +16,7 @@
 
   Remarks:
     None.
- 
+
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -44,7 +44,7 @@
 // DOM-IGNORE-END
 
 #ifndef _HEARTRATE9_H
-#define	_HEARTRATE9_H
+#define _HEARTRATE9_H
 
 /**
   Section: Included Files
@@ -53,10 +53,11 @@
 #include <xc.h>
 #include <stdint.h>
 
-bool usb_uart_USART_Read(uint8_t* pRdBuffer, const size_t size);
-bool usb_uart_USART_Write(uint8_t* pWrBuffer, const size_t size);
+bool usb_uart_USART_Read(uint8_t *pRdBuffer, const size_t size);
+bool usb_uart_USART_Write(uint8_t *pWrBuffer, const size_t size);
+size_t usb_uart_USART_ReadCountGet(void);
+size_t usb_uart_USART_WriteCountGet(void);
 bool usb_uart_USART_ReadIsBusy(void);
 bool usb_uart_USART_WriteIsBusy(void);
-
 
 #endif // _HEARTRATE9_H
