@@ -1,16 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include "definitions.h" // SYS function prototypes
-#include "click_routines/usb_uart/usb_uart.h"
-#include "config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.h"
-#include <xc.h>
+#include "utils.h"
 
-#define MS_TICKS 48000UL
-#define LED_FLASH_MS 1000UL
-#define MESSAGE_LENGTH 5
-#define TIMEOUT_LIMIT 50000
-#define TIMEOUT_MS 500
 #define VALID_MESSAGE "hello\r\n"
 
 volatile uint32_t msCount = 0;
@@ -22,102 +11,7 @@ uint8_t join_existing_network[] = "AT+EN\r";
 uint8_t disassociate[] = "AT+DASSL\r";
 uint8_t change_channel[] = "AT+CCHANGE:10\r";
 
-uint8_t messageBuffer[MESSAGE_LENGTH + 1]; // Buffer for received messages
-
-// SysTick Handler for 1ms timer
-void SysTick_Handler()
-{
-    msCount++;
-}
-
-// Delay for specified milliseconds
-void delayMs(uint32_t milliseconds)
-{
-    uint32_t start = msCount;
-    while ((msCount - start) < milliseconds)
-    {
-        __WFI();
-    }
-}
-
-// Function to read all bytes with timeout
-size_t readAllBytesWithTimeout(uint8_t *buffer, size_t maxBufferSize)
-{
-    uint8_t tempByte;
-    size_t count = 0;
-    uint32_t startTime = msCount;
-
-    if (buffer == NULL || maxBufferSize == 0)
-    {
-        printf("Invalid buffer or size.\r\n");
-        return 0;
-    }
-
-    while (count < maxBufferSize - 1)
-    {
-        if (SERCOM4_USART_Read(&tempByte, 1))
-        {
-            while (SERCOM4_USART_ReadIsBusy())
-            {
-                if ((msCount - startTime) >= TIMEOUT_MS)
-                {
-                    buffer[count] = '\0';
-                    return count;
-                }
-            }
-
-            buffer[count] = tempByte;
-            count++;
-            startTime = msCount; // Reset start time for the next byte
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    buffer[count] = '\0'; // Null-terminate the buffer
-    return count;
-}
-
-// Initialize the system
-void systemInitialize()
-{
-    // Set up LED output
-    PORT_REGS->GROUP[0].PORT_DIRSET = PORT_PA14;
-    PORT_REGS->GROUP[0].PORT_OUTSET = PORT_PA14;
-
-    // Sleep when idle
-    PM_REGS->PM_SLEEPCFG = PM_SLEEPCFG_SLEEPMODE_IDLE;
-
-    // Configure SysTick
-    SysTick_Config(MS_TICKS);
-
-    // Allow ZigBee module to initialize
-    delayMs(1000);
-    printf("System initialized.\r\n");
-}
-
-// Send a command and read the response
-void sendCommandAndReadResponse(uint8_t *command, const char *description, uint8_t *readBuffer, size_t bufferSize)
-{
-    memset(readBuffer, '\0', bufferSize);
-    usb_uart_USART_Write(command, strlen((char *)command));
-    while (usb_uart_USART_WriteIsBusy())
-        ;
-    delayMs(500);
-    size_t numBytesRead = readAllBytesWithTimeout(readBuffer, bufferSize);
-    printf("%s: Read %u bytes:\r\n%s\r\n", description, numBytesRead, readBuffer);
-}
-
-// Blink the LED
-void handleLEDBlink()
-{
-    if ((msCount % LED_FLASH_MS) == 0)
-    {
-        PORT_REGS->GROUP[0].PORT_OUTTGL = PORT_PA14;
-    }
-}
+uint8_t messageBuffer[100]; // Buffer for received messages
 
 // Process received messages
 void processReceivedMessages()
