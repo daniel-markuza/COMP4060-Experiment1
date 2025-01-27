@@ -18,9 +18,8 @@ volatile size_t validMessageCount = 0;
 
 // Commands
 uint8_t restart[] = "ATZ\r";
-uint8_t join_existing_network[] = "AT+EN\r";
+uint8_t join_existing_network[] = "AT+JN\r";
 uint8_t disassociate[] = "AT+DASSL\r";
-uint8_t change_channel[] = "AT+CCHANGE:10\r";
 
 uint8_t messageBuffer[MESSAGE_LENGTH + 1]; // Buffer for received messages
 
@@ -180,7 +179,7 @@ void processReceivedMessages()
 }
 
 // Main coordinator function
-void coordinator_main(void)
+void worker_main(void)
 {
     systemInitialize();
 
@@ -191,15 +190,35 @@ void coordinator_main(void)
     sendCommandAndReadResponse(disassociate, "Disassociated from networks", messageBuffer, sizeof(messageBuffer));
 
     // Join own network
-    sendCommandAndReadResponse(join_existing_network, "Joined network", messageBuffer, sizeof(messageBuffer));
+    sendCommandAndReadResponse(join_existing_network, "Joined Coordinator network", messageBuffer, sizeof(messageBuffer));
 
     printf("Listening for messages...\r\n");
     delayMs(500);
     while (1)
     {
-        __WFI(); // Wait for interrupt
+        __WFI();
 
-        processReceivedMessages();
+        // Blast messages
+        usb_uart_USART_Write((uint8_t *)"AT+UCAST:0000=HELLO\r", strlen("AT+UCAST:0000=HELLO\r")); // using ucast
+        // usb_uart_USART_Write((uint8_t *)"AT+RDATAB:05\rHELLO\r", strlen("AT+RDATAB:05\rHELLO\r")); // using rdatab
+
+        while (usb_uart_USART_WriteIsBusy())
+            ;
+        // Start listening for a message
+        if (SERCOM4_USART_Read((void *)messageBuffer, MESSAGE_LENGTH))
+        {
+            // Wait for the read to complete
+            while (SERCOM4_USART_ReadIsBusy())
+                ;
+
+            // Null-terminate the received message
+            messageBuffer[MESSAGE_LENGTH] = '\0';
+
+            // Print the received message
+            printf("Received message: %s\r\n", messageBuffer);
+        }
+
+        // handle blinking the light
         handleLEDBlink();
     }
 }

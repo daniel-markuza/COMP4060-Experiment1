@@ -15,7 +15,7 @@
 
   Remarks:
     None.
- 
+
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -42,9 +42,9 @@
 */
 // DOM-IGNORE-END
 
-#ifndef _USB_UART_EXAMPLE_H
-#define	_USB_UART_EXAMPLE_H
+#ifndef _WORKER_H
+#define _WORKER_H
 
-void usb_uart_example(void);
+void worker_main(void);
 
-#endif // _USB_UART_EXAMPLE_H
+#endif // _WORKER_H
