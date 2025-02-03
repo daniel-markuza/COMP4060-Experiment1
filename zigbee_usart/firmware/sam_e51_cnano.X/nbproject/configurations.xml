@@ -199,6 +199,8 @@
         <logicalFolder name="f1" displayName="usb_uart" projectFiles="true">
           <itemPath>../src/click_routines/usb_uart/usb_uart.c</itemPath>
           <itemPath>../src/click_routines/usb_uart/usb_uart_example.c</itemPath>
+          <itemPath>../src/usb_uart_join.c</itemPath>
+          <itemPath>../src/usb_uart_join.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="config" projectFiles="true">
@@ -290,6 +292,10 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../src/click_routines/usb_uart/usb_uart_example.c"
+            ex="true"
+            overriding="false">
+      </item>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.interface" value="swd"/>

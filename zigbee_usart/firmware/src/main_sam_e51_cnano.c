@@ -49,7 +49,7 @@
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
-#include "click_routines/usb_uart/usb_uart_example.h"
+#include "usb_uart_join.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -62,7 +62,7 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
 
-    usb_uart_example();
+    usb_uart_join();
     while ( true )
     {
         ;

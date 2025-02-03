@@ -34,4 +34,3 @@ MP_AS_DIR="/Applications/microchip/xc32/v4.45/bin"
 MP_LD_DIR="/Applications/microchip/xc32/v4.45/bin"
 MP_AR_DIR="/Applications/microchip/xc32/v4.45/bin"
 CMSIS_DIR=/Applications/microchip/mplabx/v6.20/packs/arm/CMSIS/5.4.0
-DFP_DIR=/Users/paradox/.mchp_packs/Microchip/SAME51_DFP/3.6.130

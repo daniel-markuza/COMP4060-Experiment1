@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/paradox/Downloads/zigbee_usart/firmware/src/click_routines/usb_uart/usb_uart.c</file>
-            <file>file:/Users/paradox/Downloads/zigbee_usart/firmware/src/click_routines/usb_uart/usb_uart_example.c</file>
-            <file>file:/Users/paradox/Downloads/zigbee_usart/firmware/src/main_sam_e51_cnano.c</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/config/sam_e51_cnano/pin_configurations.csv</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/click_routines/usb_uart/workers.h</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/click_routines/usb_uart/usb_uart_example.c</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/click_routines/click_interface.h</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/main_sam_e51_cnano.c</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/usb_uart_join.c</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/usb_uart_join.h</file>
+            <file>file:/Users/daniel/Documents/W25/COMP4060/Labs/Experiment%201/GITDEVELOP/zigbee_usart/firmware/src/click_routines/usb_uart/usb_uart.c</file>
         </group>
     </open-files>
 </project-private>
