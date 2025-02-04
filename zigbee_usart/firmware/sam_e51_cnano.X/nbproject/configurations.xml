@@ -174,7 +174,9 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../src/example.h</itemPath>
+      <itemPath>../src/utils.h</itemPath>
+      <itemPath>../src/worker.h</itemPath>
+      <itemPath>../src/click_routines/usb_uart/usb_uart_example.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -240,13 +242,52 @@
           <itemPath>../src/config/sam_e51_cnano/libc_syscalls.c</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="sam_e51_cnano.X"
+                     displayName="sam_e51_cnano.X"
+                     projectFiles="true">
+        <logicalFolder name="debug" displayName="debug" projectFiles="true">
+          <logicalFolder name="sam_e51_cnano"
+                         displayName="sam_e51_cnano"
+                         projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="sam_e51_cnano_054"
+                         displayName="sam_e51_cnano_054"
+                         projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="sam_e51_cnano_123"
+                         displayName="sam_e51_cnano_123"
+                         projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="dist" displayName="dist" projectFiles="true">
+          <logicalFolder name="sam_e51_cnano"
+                         displayName="sam_e51_cnano"
+                         projectFiles="true">
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="production" displayName="production" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="sam_e51_cnano_123"
+                         displayName="sam_e51_cnano_123"
+                         projectFiles="true">
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="production" displayName="production" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>../src/main_sam_e51_cnano.c</itemPath>
       <itemPath>../src/config/sam_e51_cnano/pin_configurations.csv</itemPath>
-      <itemPath>../src/example.c</itemPath>
+      <itemPath>../src/utils.c</itemPath>
+      <itemPath>../src/worker.c</itemPath>
+      <itemPath>../src/click_routines/usb_uart/usb_uart_example.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

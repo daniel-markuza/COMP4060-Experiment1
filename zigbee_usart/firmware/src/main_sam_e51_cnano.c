@@ -50,7 +50,8 @@
 #include <stdlib.h>      // Defines EXIT_FAILURE
 #include "definitions.h" // SYS function prototypes
 #include "coordinator.h"
-#include "example.h"
+#include "worker.h"
+#include "click_routines/usb_uart/usb_uart_example.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -63,7 +64,9 @@ int main(void)
   /* Initialize all modules */
   SYS_Initialize(NULL);
 
-  coordinator_main();
+  worker_main();
+//    coordinator_main();
+//          usb_uart_example();
   while (true)
   {
     ;

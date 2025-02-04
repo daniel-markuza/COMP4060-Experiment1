@@ -1,41 +1,49 @@
 #include "utils.h"
-
-volatile uint32_t msCount = 0;
-volatile size_t validMessageCount = 0;
+#include "stdio.h"
+#include "string.h"
+#include "definitions.h"
+#include "click_routines/usb_uart/usb_uart.h"
 
 // Commands
-uint8_t restart[] = "ATZ\r";
-uint8_t join_existing_network[] = "AT+JN\r";
-uint8_t disassociate[] = "AT+DASSL\r";
-uint8_t *valid_message = "AT+UCAST:0000=HELLO\r";
+uint8_t valid_message_ucast[] = "AT+UCAST:0000=hi\r";
+uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
+uint8_t valid_message_rdatab[] = "hi\r";
 
 uint8_t messageBuffer[100]; // Buffer for received messages
 
-// Main coordinator function
-void coordinator_main(void)
+// Main worker function
+void worker_main(void)
 {
     systemInitialize();
+
+    // Disassociate device
+    sendCommandAndReadResponse(disassociate, "Disassociated from previous network", messageBuffer, sizeof(messageBuffer));
 
     // Restart device
     sendCommandAndReadResponse(restart, "Restarted", messageBuffer, sizeof(messageBuffer));
 
-    // Disassociate from any previous networks
-    sendCommandAndReadResponse(disassociate, "Disassociated from networks", messageBuffer, sizeof(messageBuffer));
+    // Join existing network
+    sendCommandAndReadResponse(join_existing_network, "Joined existing network", messageBuffer, sizeof(messageBuffer));
 
-    // Join own network
-    sendCommandAndReadResponse(join_existing_network, "Joined network", messageBuffer, sizeof(messageBuffer));
+    uint32_t lastSendTime = getMsCount(); // Track last send time
 
-    printf("Listening for messages...\r\n");
-    delayMs(500);
-    while (1)
+    int i=1000;
+    while (i > 0)
     {
-        __WFI(); // Wait for interrupt
+        __WFI(); // Wait for interrupt (SysTick will update msCount)
 
-        // Blast messages
-        usb_uart_USART_Write((uint8_t *)valid_message, strlen((char *)valid_message)); // Using UCAST
-        while (usb_uart_USART_WriteIsBusy())
-            ;
+        if ((getMsCount() - lastSendTime) >= 150) // Ensure precise 50ms timing
+        {
+            usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
+            while (usb_uart_USART_WriteIsBusy())
+                ;
+            
+             usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
+            while (usb_uart_USART_WriteIsBusy())
+                ;
 
-        handleLEDBlink();
+            printf("Sent message %d\r\n", i--);
+            lastSendTime = getMsCount(); // Reset send time
+        }
     }
 }

@@ -1,4 +1,4 @@
-build/sam_e51_cnano_123/production/_ext/1296496744/usb_uart_example.o: \
+build/sam_e51_cnano_123/debug/_ext/1296496744/usb_uart_example.o: \
  ../src/click_routines/usb_uart/usb_uart_example.c \
  ../src/config/sam_e51_cnano/definitions.h \
  ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.h \

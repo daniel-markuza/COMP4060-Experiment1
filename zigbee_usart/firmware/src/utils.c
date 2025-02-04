@@ -3,9 +3,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <xc.h>
+#include "click_routines/usb_uart/usb_uart.h"
 
 // Global variable for milliseconds counter
 volatile uint32_t msCount = 0;
+
+// Commands
+uint8_t restart[] = "ATZ\r";
+uint8_t join_own_network[] = "AT+EN\r";
+// uint8_t join_existing_network[] = "AT+JPAN:20,4ED7\r";
+uint8_t join_existing_network[] = "AT+JPAN:20,2EAD\r";
+uint8_t network_info[] = "AT+N?\r";
+uint8_t disassociate[] = "AT+DASSL\r";
+uint8_t change_channel[] = "AT+CCHANGE:14\r";
+char out_string[200];
+uint8_t io_buffer[10];
+uint8_t io_read_chars[100];
 
 // SysTick Handler for 1ms timer
 void SysTick_Handler()
@@ -18,8 +31,29 @@ void delayMs(uint32_t milliseconds)
 {
     uint32_t start = msCount;
     while ((msCount - start) < milliseconds)
+        ;
+}
+
+void doInputOutput()
+{
+    if (!usb_uart_USART_ReadIsBusy())
     {
-        __WFI(); // Enter low-power mode while waiting
+        sprintf(out_string, "%c", io_read_chars[0]);
+        // usb_uart_USART_Write((uint8_t *)out_string,sizeof(out_string));
+        printf(out_string);
+
+        // read the next one
+        usb_uart_USART_Read((uint8_t *)&io_read_chars, 1);
+    }
+    SERCOM5_USART_Read(&io_buffer, 10, true);
+    if (io_buffer[0] != '\0')
+    {
+        // printf((char*)&buffer); // comment this out if your serial program does a local echo.
+        //  send the string to the zigbee one char at a time
+        for (int i = 0; i < 10 && io_buffer[i] != '\0'; i++)
+        {
+            usb_uart_USART_Write((uint8_t *)&io_buffer[i], 1);
+        }
     }
 }
 
@@ -68,11 +102,12 @@ void sendCommandAndReadResponse(uint8_t *command, const char *description, uint8
 {
     memset(readBuffer, '\0', bufferSize);
     usb_uart_USART_Write(command, strlen((char *)command));
+    delayMs(200);
     while (usb_uart_USART_WriteIsBusy())
         ;
-    delayMs(500);
-    size_t numBytesRead = readAllBytesWithTimeout(readBuffer, bufferSize);
-    printf("%s: Read %u bytes:\r\n%s\r\n", description, numBytesRead, readBuffer);
+    readAllBytesWithTimeout(readBuffer, bufferSize);
+    delayMs(200);
+    printf("%s:\r\n%s\r\n", description, readBuffer);
 }
 
 // Blink the LED
@@ -100,4 +135,9 @@ void systemInitialize()
     // Allow ZigBee module to initialize
     delayMs(1000);
     printf("System initialized.\r\n");
+}
+
+uint32_t getMsCount()
+{
+    return msCount;
 }

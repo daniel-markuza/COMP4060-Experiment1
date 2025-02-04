@@ -105,7 +105,7 @@ void SERCOM4_USART_Initialize(void)
 
     /* Configure Baud Rate */
     // SERCOM4_REGS->USART_INT.SERCOM_BAUD = (uint16_t)SERCOM_USART_INT_BAUD_BAUD(SERCOM4_USART_INT_BAUD_VALUE);
-    //  RG set to 19200
+    //  RG set to 115200
     uint32_t clkFrequency = SERCOM4_USART_FrequencyGet();
     SERCOM4_REGS->USART_INT.SERCOM_BAUD = 65536U - (uint32_t)(((uint64_t)65536U * 16U * 19200U) / clkFrequency);
 
