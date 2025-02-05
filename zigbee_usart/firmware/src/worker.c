@@ -44,7 +44,7 @@ void worker_main(void)
             	printf("Sent message %d\r\n", i--);
             	lastSendTime = getMsCount(); // Reset send time
         	}
-    	}
+      }
     }
     else
     {
@@ -65,6 +65,6 @@ void worker_main(void)
             	printf("Sent message %d\r\n", i--);
             	lastSendTime = getMsCount(); // Reset send time
         	}
-    	}
+      }
     }
 }
