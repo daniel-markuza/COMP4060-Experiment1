@@ -85,7 +85,7 @@ FIXDEPS=fixDeps
 _/_=/
 ShExtension=.sh
 Device=ATSAME51J20A
-ProjectDir=/Users/paradox/COMP4060-Experiment1/zigbee_usart/firmware/sam_e51_cnano.X
+ProjectDir=/Users/daniel/Documents/W25/COMP4060/Labs/Experiment\ 1/GITDEVELOP/zigbee_usart/firmware/sam_e51_cnano.X
 ProjectName=usb_uart_click_sam_e51_cnano
 ConfName=sam_e51_cnano_123
 ImagePath=dist/sam_e51_cnano_123/${IMAGE_TYPE}/sam_e51_cnano.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
@@ -124,242 +124,242 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1296496744/usb_uart.o: ../src/click_routines/usb_uart/usb_uart.c  .generated_files/flags/sam_e51_cnano_123/f1df463794fb1cdaa3abe32abad7ba889615dfc5 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1296496744/usb_uart.o: ../src/click_routines/usb_uart/usb_uart.c  .generated_files/flags/sam_e51_cnano_123/e284f4c8d17766718a57cd38f28bb5e7fa90795d .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1296496744" 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1296496744/usb_uart.o.d" -o ${OBJECTDIR}/_ext/1296496744/usb_uart.o ../src/click_routines/usb_uart/usb_uart.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/coordinator.o: ../src/coordinator.c  .generated_files/flags/sam_e51_cnano_123/c0179cb02a1c6d85a71f9a927f6eb3122702459 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/coordinator.o: ../src/coordinator.c  .generated_files/flags/sam_e51_cnano_123/af733e69842f62c5bd672c3d6db0717c6e1bd3eb .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/coordinator.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/coordinator.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/coordinator.o.d" -o ${OBJECTDIR}/_ext/1360937237/coordinator.o ../src/coordinator.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/7187140/plib_clock.o: ../src/config/sam_e51_cnano/peripheral/clock/plib_clock.c  .generated_files/flags/sam_e51_cnano_123/b02dbea5017aca3d18ce0e49f8ec1c2efb4490fc .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/7187140/plib_clock.o: ../src/config/sam_e51_cnano/peripheral/clock/plib_clock.c  .generated_files/flags/sam_e51_cnano_123/fbab0c466793e3ee25b7f303ec4350fa4445f840 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/7187140" 
 	@${RM} ${OBJECTDIR}/_ext/7187140/plib_clock.o.d 
 	@${RM} ${OBJECTDIR}/_ext/7187140/plib_clock.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/7187140/plib_clock.o.d" -o ${OBJECTDIR}/_ext/7187140/plib_clock.o ../src/config/sam_e51_cnano/peripheral/clock/plib_clock.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/831051564/plib_cmcc.o: ../src/config/sam_e51_cnano/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/sam_e51_cnano_123/389a1c386690e5031f7875775024442d6e8a6d42 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/831051564/plib_cmcc.o: ../src/config/sam_e51_cnano/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/sam_e51_cnano_123/724ec9a6a4238527d550e7ff09390f6b00d56dc1 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/831051564" 
 	@${RM} ${OBJECTDIR}/_ext/831051564/plib_cmcc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/831051564/plib_cmcc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/831051564/plib_cmcc.o.d" -o ${OBJECTDIR}/_ext/831051564/plib_cmcc.o ../src/config/sam_e51_cnano/peripheral/cmcc/plib_cmcc.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/9336626/plib_evsys.o: ../src/config/sam_e51_cnano/peripheral/evsys/plib_evsys.c  .generated_files/flags/sam_e51_cnano_123/f7218a2eb9c745c42d79b806f61b9407d2745e68 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/9336626/plib_evsys.o: ../src/config/sam_e51_cnano/peripheral/evsys/plib_evsys.c  .generated_files/flags/sam_e51_cnano_123/6882490635c9a84849d915e82cbad86ef6372b7a .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/9336626" 
 	@${RM} ${OBJECTDIR}/_ext/9336626/plib_evsys.o.d 
 	@${RM} ${OBJECTDIR}/_ext/9336626/plib_evsys.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/9336626/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/9336626/plib_evsys.o ../src/config/sam_e51_cnano/peripheral/evsys/plib_evsys.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/830715028/plib_nvic.o: ../src/config/sam_e51_cnano/peripheral/nvic/plib_nvic.c  .generated_files/flags/sam_e51_cnano_123/6b7f65d9c1df6bff2ed552f988b1f71ef5151440 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/830715028/plib_nvic.o: ../src/config/sam_e51_cnano/peripheral/nvic/plib_nvic.c  .generated_files/flags/sam_e51_cnano_123/889e8e67af08822acd797a4e0d3e61d9e98a4d69 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/830715028" 
 	@${RM} ${OBJECTDIR}/_ext/830715028/plib_nvic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/830715028/plib_nvic.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/830715028/plib_nvic.o.d" -o ${OBJECTDIR}/_ext/830715028/plib_nvic.o ../src/config/sam_e51_cnano/peripheral/nvic/plib_nvic.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o: ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/sam_e51_cnano_123/fa4904cf640575b42b62dee76c08fdd6371a47b2 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o: ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/sam_e51_cnano_123/73053efef7f0600beb4afdd9270797863624383e .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/226030394" 
 	@${RM} ${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/830661877/plib_port.o: ../src/config/sam_e51_cnano/peripheral/port/plib_port.c  .generated_files/flags/sam_e51_cnano_123/e4abff102b9d334f570a5ed84ed99930fd588fe0 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/830661877/plib_port.o: ../src/config/sam_e51_cnano/peripheral/port/plib_port.c  .generated_files/flags/sam_e51_cnano_123/cacd60eb0c83924a6dcd114821c15f6f0bf4ee06 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/830661877" 
 	@${RM} ${OBJECTDIR}/_ext/830661877/plib_port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/830661877/plib_port.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/830661877/plib_port.o.d" -o ${OBJECTDIR}/_ext/830661877/plib_port.o ../src/config/sam_e51_cnano/peripheral/port/plib_port.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.c  .generated_files/flags/sam_e51_cnano_123/f0aaede557672557037f299b72adc27ed0ddc6c9 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.c  .generated_files/flags/sam_e51_cnano_123/a7e00bd774e4ce710d10e84f1df128cc6eb1970d .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/314480351" 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o.d" -o ${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c  .generated_files/flags/sam_e51_cnano_123/c700937fc8c0707e0c781569d71921eaac8ca261 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c  .generated_files/flags/sam_e51_cnano_123/50e78c963c8d87c6cce286861e412774eb64d073 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/314480351" 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o.d" -o ${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/865175840/xc32_monitor.o: ../src/config/sam_e51_cnano/stdio/xc32_monitor.c  .generated_files/flags/sam_e51_cnano_123/6bdfd3b057f4df1959162067c4c64990a5d2c76c .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/865175840/xc32_monitor.o: ../src/config/sam_e51_cnano/stdio/xc32_monitor.c  .generated_files/flags/sam_e51_cnano_123/3e14488c2e2e1d7badb0f6960fa317de8946c8bb .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/865175840" 
 	@${RM} ${OBJECTDIR}/_ext/865175840/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/865175840/xc32_monitor.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/865175840/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/865175840/xc32_monitor.o ../src/config/sam_e51_cnano/stdio/xc32_monitor.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/initialization.o: ../src/config/sam_e51_cnano/initialization.c  .generated_files/flags/sam_e51_cnano_123/e0c01c72aba3db88f62cfbaf586467479243e5cb .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/initialization.o: ../src/config/sam_e51_cnano/initialization.c  .generated_files/flags/sam_e51_cnano_123/2fb22d47362d6b79403382c1f18f14ed71ea7f9e .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/initialization.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/initialization.o.d" -o ${OBJECTDIR}/_ext/570918426/initialization.o ../src/config/sam_e51_cnano/initialization.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/interrupts.o: ../src/config/sam_e51_cnano/interrupts.c  .generated_files/flags/sam_e51_cnano_123/8a3c6057aa601e5a90bb258729ed89b6f8150711 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/interrupts.o: ../src/config/sam_e51_cnano/interrupts.c  .generated_files/flags/sam_e51_cnano_123/6ea717e55a7d029180e49e758c1edd48b5942f6c .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/interrupts.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/interrupts.o.d" -o ${OBJECTDIR}/_ext/570918426/interrupts.o ../src/config/sam_e51_cnano/interrupts.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/exceptions.o: ../src/config/sam_e51_cnano/exceptions.c  .generated_files/flags/sam_e51_cnano_123/5b9cceb4b5d8bfb3f7d52f8b4beb689b09ea42ee .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/exceptions.o: ../src/config/sam_e51_cnano/exceptions.c  .generated_files/flags/sam_e51_cnano_123/79f6e7617d065ad3b674cc6f3b7806be55c2341f .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/exceptions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/exceptions.o.d" -o ${OBJECTDIR}/_ext/570918426/exceptions.o ../src/config/sam_e51_cnano/exceptions.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/startup_xc32.o: ../src/config/sam_e51_cnano/startup_xc32.c  .generated_files/flags/sam_e51_cnano_123/4539b2c2ef973fd949b584902f50f32c20dfe8b5 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/startup_xc32.o: ../src/config/sam_e51_cnano/startup_xc32.c  .generated_files/flags/sam_e51_cnano_123/47bdfb22bdc0d4644d00b8ec254db36d25a56ab3 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/startup_xc32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/startup_xc32.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/startup_xc32.o.d" -o ${OBJECTDIR}/_ext/570918426/startup_xc32.o ../src/config/sam_e51_cnano/startup_xc32.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/libc_syscalls.o: ../src/config/sam_e51_cnano/libc_syscalls.c  .generated_files/flags/sam_e51_cnano_123/f573aca756712899d0e2cf9984653ffb41185838 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/libc_syscalls.o: ../src/config/sam_e51_cnano/libc_syscalls.c  .generated_files/flags/sam_e51_cnano_123/5c3e1151c3f4b9cc9f7e6d6289cb878a0a9136ce .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/libc_syscalls.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/libc_syscalls.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/libc_syscalls.o.d" -o ${OBJECTDIR}/_ext/570918426/libc_syscalls.o ../src/config/sam_e51_cnano/libc_syscalls.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o: ../src/main_sam_e51_cnano.c  .generated_files/flags/sam_e51_cnano_123/8ab303ad1ab98f87583b1b0dea4bd9a82ac5e1cf .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o: ../src/main_sam_e51_cnano.c  .generated_files/flags/sam_e51_cnano_123/52588fc8820c4ef085105a2b993cc4af1404d2f2 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o.d" -o ${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o ../src/main_sam_e51_cnano.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/utils.o: ../src/utils.c  .generated_files/flags/sam_e51_cnano_123/f11ae8db07bd5e4951f14823dd26ff08099912a6 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/utils.o: ../src/utils.c  .generated_files/flags/sam_e51_cnano_123/4f5293508937026cbbece1a3a6f278f2c7e7bdca .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/utils.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/utils.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/utils.o.d" -o ${OBJECTDIR}/_ext/1360937237/utils.o ../src/utils.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/worker.o: ../src/worker.c  .generated_files/flags/sam_e51_cnano_123/b74f7c95bc24cba430eac30da19db80b88d594c2 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/worker.o: ../src/worker.c  .generated_files/flags/sam_e51_cnano_123/1a3e50d65a1908b127433636821116513a825958 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/worker.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/worker.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/worker.o.d" -o ${OBJECTDIR}/_ext/1360937237/worker.o ../src/worker.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1296496744/usb_uart_example.o: ../src/click_routines/usb_uart/usb_uart_example.c  .generated_files/flags/sam_e51_cnano_123/5f2c50503907f1bdc65fe39a68ffc5c2b132be88 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1296496744/usb_uart_example.o: ../src/click_routines/usb_uart/usb_uart_example.c  .generated_files/flags/sam_e51_cnano_123/5f61126ba056b690851b5fb74e25fe2c0e5541e2 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1296496744" 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart_example.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart_example.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1296496744/usb_uart_example.o.d" -o ${OBJECTDIR}/_ext/1296496744/usb_uart_example.o ../src/click_routines/usb_uart/usb_uart_example.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
 else
-${OBJECTDIR}/_ext/1296496744/usb_uart.o: ../src/click_routines/usb_uart/usb_uart.c  .generated_files/flags/sam_e51_cnano_123/3ec7ad063e46404398720241b4c337b8c6f5edd .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1296496744/usb_uart.o: ../src/click_routines/usb_uart/usb_uart.c  .generated_files/flags/sam_e51_cnano_123/f39016e4cea31c570339c4cc70b1882bd398312a .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1296496744" 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1296496744/usb_uart.o.d" -o ${OBJECTDIR}/_ext/1296496744/usb_uart.o ../src/click_routines/usb_uart/usb_uart.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/coordinator.o: ../src/coordinator.c  .generated_files/flags/sam_e51_cnano_123/628d2124fac42371fafcd13a5ae9dd8c1ae76850 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/coordinator.o: ../src/coordinator.c  .generated_files/flags/sam_e51_cnano_123/3bc94865331999cf85cecdbff78342a10da84120 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/coordinator.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/coordinator.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/coordinator.o.d" -o ${OBJECTDIR}/_ext/1360937237/coordinator.o ../src/coordinator.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/7187140/plib_clock.o: ../src/config/sam_e51_cnano/peripheral/clock/plib_clock.c  .generated_files/flags/sam_e51_cnano_123/e3a8a172089b1e8a1123b27707353e2b4569adbf .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/7187140/plib_clock.o: ../src/config/sam_e51_cnano/peripheral/clock/plib_clock.c  .generated_files/flags/sam_e51_cnano_123/69cc15ce14a261f70d9ed54d1b32e65fae5434ec .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/7187140" 
 	@${RM} ${OBJECTDIR}/_ext/7187140/plib_clock.o.d 
 	@${RM} ${OBJECTDIR}/_ext/7187140/plib_clock.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/7187140/plib_clock.o.d" -o ${OBJECTDIR}/_ext/7187140/plib_clock.o ../src/config/sam_e51_cnano/peripheral/clock/plib_clock.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/831051564/plib_cmcc.o: ../src/config/sam_e51_cnano/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/sam_e51_cnano_123/2ce9a5db0449d08217bebc3f02cb8e31ef54fe2d .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/831051564/plib_cmcc.o: ../src/config/sam_e51_cnano/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/sam_e51_cnano_123/1a338d7f841cbe63970968c42c32ae0040d06171 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/831051564" 
 	@${RM} ${OBJECTDIR}/_ext/831051564/plib_cmcc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/831051564/plib_cmcc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/831051564/plib_cmcc.o.d" -o ${OBJECTDIR}/_ext/831051564/plib_cmcc.o ../src/config/sam_e51_cnano/peripheral/cmcc/plib_cmcc.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/9336626/plib_evsys.o: ../src/config/sam_e51_cnano/peripheral/evsys/plib_evsys.c  .generated_files/flags/sam_e51_cnano_123/9ee13f4a985a46d22f25e5a847a138251688753e .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/9336626/plib_evsys.o: ../src/config/sam_e51_cnano/peripheral/evsys/plib_evsys.c  .generated_files/flags/sam_e51_cnano_123/54d425cad48b0e29d4caf6dbb012865bb3869aaa .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/9336626" 
 	@${RM} ${OBJECTDIR}/_ext/9336626/plib_evsys.o.d 
 	@${RM} ${OBJECTDIR}/_ext/9336626/plib_evsys.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/9336626/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/9336626/plib_evsys.o ../src/config/sam_e51_cnano/peripheral/evsys/plib_evsys.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/830715028/plib_nvic.o: ../src/config/sam_e51_cnano/peripheral/nvic/plib_nvic.c  .generated_files/flags/sam_e51_cnano_123/d073879883856ef95a3f7b46c8d600c3df043359 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/830715028/plib_nvic.o: ../src/config/sam_e51_cnano/peripheral/nvic/plib_nvic.c  .generated_files/flags/sam_e51_cnano_123/4a2acb3f06c3b78b322a5a307ddf5482ad5c7ee5 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/830715028" 
 	@${RM} ${OBJECTDIR}/_ext/830715028/plib_nvic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/830715028/plib_nvic.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/830715028/plib_nvic.o.d" -o ${OBJECTDIR}/_ext/830715028/plib_nvic.o ../src/config/sam_e51_cnano/peripheral/nvic/plib_nvic.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o: ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/sam_e51_cnano_123/326094c0a48650102027bb253f3507c64d30b730 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o: ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/sam_e51_cnano_123/12f1411c9f1f4bc8ddf95fff03b9f8a070fce601 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/226030394" 
 	@${RM} ${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/226030394/plib_nvmctrl.o ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/830661877/plib_port.o: ../src/config/sam_e51_cnano/peripheral/port/plib_port.c  .generated_files/flags/sam_e51_cnano_123/65f00f24bf49832e033c3aaafdcf5ce77f2a25a9 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/830661877/plib_port.o: ../src/config/sam_e51_cnano/peripheral/port/plib_port.c  .generated_files/flags/sam_e51_cnano_123/5f69ea2966c9a51a1e2bca2ab40309ff125953c0 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/830661877" 
 	@${RM} ${OBJECTDIR}/_ext/830661877/plib_port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/830661877/plib_port.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/830661877/plib_port.o.d" -o ${OBJECTDIR}/_ext/830661877/plib_port.o ../src/config/sam_e51_cnano/peripheral/port/plib_port.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.c  .generated_files/flags/sam_e51_cnano_123/415df12a0bbd9cff73adddab193ad48027274570 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.c  .generated_files/flags/sam_e51_cnano_123/169eab447e5645b758d89c9301eae9f85c54f203 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/314480351" 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o.d" -o ${OBJECTDIR}/_ext/314480351/plib_sercom5_usart.o ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c  .generated_files/flags/sam_e51_cnano_123/bf2f608b253517ce297e77bc11efca9c295779da .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o: ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c  .generated_files/flags/sam_e51_cnano_123/cacff66c6491bca501ff83647c94f73219fa86fa .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/314480351" 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o.d" -o ${OBJECTDIR}/_ext/314480351/plib_sercom4_usart.o ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/865175840/xc32_monitor.o: ../src/config/sam_e51_cnano/stdio/xc32_monitor.c  .generated_files/flags/sam_e51_cnano_123/f5af096709fbb549a758e90d9848f92f38c6319 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/865175840/xc32_monitor.o: ../src/config/sam_e51_cnano/stdio/xc32_monitor.c  .generated_files/flags/sam_e51_cnano_123/58e2d5e9a7717408e09367a96922b14cd40322f2 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/865175840" 
 	@${RM} ${OBJECTDIR}/_ext/865175840/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/865175840/xc32_monitor.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/865175840/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/865175840/xc32_monitor.o ../src/config/sam_e51_cnano/stdio/xc32_monitor.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/initialization.o: ../src/config/sam_e51_cnano/initialization.c  .generated_files/flags/sam_e51_cnano_123/857616cc7893f5a1f0b45bb705c59120f376f7ee .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/initialization.o: ../src/config/sam_e51_cnano/initialization.c  .generated_files/flags/sam_e51_cnano_123/482fc0e515d8c80b6fb4443a439af57581ee171c .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/initialization.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/initialization.o.d" -o ${OBJECTDIR}/_ext/570918426/initialization.o ../src/config/sam_e51_cnano/initialization.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/interrupts.o: ../src/config/sam_e51_cnano/interrupts.c  .generated_files/flags/sam_e51_cnano_123/35b0fe6410e4f96ecbb1cbcf31eddead019bbc4e .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/interrupts.o: ../src/config/sam_e51_cnano/interrupts.c  .generated_files/flags/sam_e51_cnano_123/ba7635ad11240f2f3fe7c6bc6383d8dc1337eeee .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/interrupts.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/interrupts.o.d" -o ${OBJECTDIR}/_ext/570918426/interrupts.o ../src/config/sam_e51_cnano/interrupts.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/exceptions.o: ../src/config/sam_e51_cnano/exceptions.c  .generated_files/flags/sam_e51_cnano_123/4057f6fa665901fc201cbdaef3290abb80a9cde1 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/exceptions.o: ../src/config/sam_e51_cnano/exceptions.c  .generated_files/flags/sam_e51_cnano_123/1c7aacc9c3bfe0adf6d61d428f6638ddf19b8d32 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/exceptions.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/exceptions.o.d" -o ${OBJECTDIR}/_ext/570918426/exceptions.o ../src/config/sam_e51_cnano/exceptions.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/startup_xc32.o: ../src/config/sam_e51_cnano/startup_xc32.c  .generated_files/flags/sam_e51_cnano_123/7df62d6f0f501b824e55ae906a4ea35bf714979c .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/startup_xc32.o: ../src/config/sam_e51_cnano/startup_xc32.c  .generated_files/flags/sam_e51_cnano_123/4f8039461653d96cbe92f1d73f7717809f2762c .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/startup_xc32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/startup_xc32.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/startup_xc32.o.d" -o ${OBJECTDIR}/_ext/570918426/startup_xc32.o ../src/config/sam_e51_cnano/startup_xc32.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/570918426/libc_syscalls.o: ../src/config/sam_e51_cnano/libc_syscalls.c  .generated_files/flags/sam_e51_cnano_123/91943b7aea3b79657ca7321d6a20677a83fc8f69 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/570918426/libc_syscalls.o: ../src/config/sam_e51_cnano/libc_syscalls.c  .generated_files/flags/sam_e51_cnano_123/c268962106592e3a8dead8d87ceb8c2d251b0f21 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/570918426" 
 	@${RM} ${OBJECTDIR}/_ext/570918426/libc_syscalls.o.d 
 	@${RM} ${OBJECTDIR}/_ext/570918426/libc_syscalls.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/570918426/libc_syscalls.o.d" -o ${OBJECTDIR}/_ext/570918426/libc_syscalls.o ../src/config/sam_e51_cnano/libc_syscalls.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o: ../src/main_sam_e51_cnano.c  .generated_files/flags/sam_e51_cnano_123/62506ccc634c56c15cf3cc00cc550b543918457a .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o: ../src/main_sam_e51_cnano.c  .generated_files/flags/sam_e51_cnano_123/dd6dd00016a105e01401e69de4336f2464ef54a8 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o.d" -o ${OBJECTDIR}/_ext/1360937237/main_sam_e51_cnano.o ../src/main_sam_e51_cnano.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/utils.o: ../src/utils.c  .generated_files/flags/sam_e51_cnano_123/d8623b2c8e9a2b7a3edace9318e81d6bac7d9ce9 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/utils.o: ../src/utils.c  .generated_files/flags/sam_e51_cnano_123/b6df461835d05b3c6226dc995f506dd52bd633aa .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/utils.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/utils.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/utils.o.d" -o ${OBJECTDIR}/_ext/1360937237/utils.o ../src/utils.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/worker.o: ../src/worker.c  .generated_files/flags/sam_e51_cnano_123/486e00b0e16a15dc22faec66b84f9274a442e4f3 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1360937237/worker.o: ../src/worker.c  .generated_files/flags/sam_e51_cnano_123/d5b7f9e8bdb11d355c9ce3fb22896b3d7c2a5303 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/worker.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/worker.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -O1 -I"../src" -I"../src/config/sam_e51_cnano" -I"../src/packs/ATSAME51J20A_DFP" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/worker.o.d" -o ${OBJECTDIR}/_ext/1360937237/worker.o ../src/worker.c    -DXPRJ_sam_e51_cnano_123=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1296496744/usb_uart_example.o: ../src/click_routines/usb_uart/usb_uart_example.c  .generated_files/flags/sam_e51_cnano_123/95a2fba2054fbd2593aafd5a00e3ae0babafb460 .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/1296496744/usb_uart_example.o: ../src/click_routines/usb_uart/usb_uart_example.c  .generated_files/flags/sam_e51_cnano_123/74da91f414e3135042b08f059dea687350b37c4c .generated_files/flags/sam_e51_cnano_123/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/1296496744" 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart_example.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1296496744/usb_uart_example.o 
