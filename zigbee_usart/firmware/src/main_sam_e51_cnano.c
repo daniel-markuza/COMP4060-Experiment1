@@ -64,9 +64,10 @@ int main(void)
   /* Initialize all modules */
   SYS_Initialize(NULL);
 
+//    usb_uart_example();
   worker_main();
-//    coordinator_main();
-//          usb_uart_example();
+//  coordinator_main();
+  //          usb_uart_example();
   while (true)
   {
     ;
