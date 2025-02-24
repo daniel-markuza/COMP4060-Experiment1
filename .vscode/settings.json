@@ -7,7 +7,9 @@
         "string.h": "c",
         "_string.h": "c",
         "click_interface.h": "c",
-        "plib_sercom4_usart.h": "c"
+        "plib_sercom4_usart.h": "c",
+        "stdio.h": "c",
+        "utils.h": "c"
     },
     "files.exclude": {
         "**/.git": true,
