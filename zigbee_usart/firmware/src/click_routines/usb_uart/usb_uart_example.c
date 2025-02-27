@@ -47,6 +47,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <stdint.h>
 #include "definitions.h" // SYS function prototypes
 #include "usb_uart.h"
@@ -59,6 +60,8 @@
 
 // number of millisecond between LED flashes
 #define LED_FLASH_MS 1000UL
+#define PATTERN_LENGTH 14 // Length of "RAW:-xxx,hi\r\n"
+
 
 //// NOTE: this overflows every ~50 days, so I'm not going to care here...
 // volatile uint32_t msCount = 0;
@@ -119,6 +122,76 @@ void usb_uart_example(void)
   // start reading
   usb_uart_USART_Read((uint8_t *)&read_chars, 1);
   printf("Let's go\n");
+
+//  uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
+//  uint8_t valid_message_rdatab[] = "hi\r";
+//  int i = 50;
+//  while (i > 0)
+//  {
+//    if ((getMsCount() % 350UL) == 0)
+//    {
+//      usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
+//      while (usb_uart_USART_WriteIsBusy())
+//        ;
+//
+//      usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
+//      while (usb_uart_USART_WriteIsBusy())
+//        ;
+//
+//      printf("Sent message %d\r\n", i--);
+//    }
+//  }
+  
+  
+//  uint8_t tempByte;
+//    char slidingWindow[PATTERN_LENGTH + 1] = {0}; // Stores last received bytes (safe for "RAW:-XXX,hi\r\n")
+//    char rssiBuffer[4] = {0};                     // Buffer for extracted RSSI (max 3 digits + null)
+//    size_t rssiCount = 0;                         // Count of valid RSSI messages
+//
+//    while (SERCOM4_USART_Read(&tempByte, 1)) // Read one byte at a time
+//    {
+//        // Wait until the read operation is complete
+//        while (SERCOM4_USART_ReadIsBusy())
+//            ;
+//
+//        // Shift window left and add new byte
+//        memmove(slidingWindow, slidingWindow + 1, sizeof(slidingWindow) - 1);
+//        slidingWindow[sizeof(slidingWindow) - 2] = tempByte; // Store new byte in second-last position
+//
+//        // Ensure sliding window is null-terminated correctly
+//        slidingWindow[sizeof(slidingWindow) - 1] = '\0';
+//
+//        // Look for "RAW:" in the sliding window
+//        char *rawStart = strstr(slidingWindow, "RAW:");
+//        if (rawStart != NULL)
+//        {
+//            // Find the position of the comma `,` which separates RSSI from the message
+//            char *commaPos = strchr(rawStart, ',');
+//            if (commaPos != NULL)
+//            {
+//                // Calculate RSSI length (must be between "RAW:-" and `,`)
+//                int rssiLength = commaPos - (rawStart + 4); // "RAW:-" is 4 chars long
+//
+//                // Validate RSSI is 2 or 3 digits
+//                if (rssiLength >= 2 && rssiLength <= 3)
+//                {
+//                    strncpy(rssiBuffer, rawStart + 4, rssiLength); // Copy RSSI value
+//                    rssiBuffer[rssiLength] = '\0';                 // Null terminate
+//
+//                    // Increment count
+//                    rssiCount++;
+//
+//                    // Print RSSI and count
+//                    printf("Valid RSSI received: %s dBm, Count: %u\r\n", rssiBuffer, rssiCount);
+//
+//                    // Clear the sliding window to avoid reprocessing the same message
+//                    memset(slidingWindow, 0, sizeof(slidingWindow));
+//                }
+//            }
+//        }
+//        handleLEDBlink();
+//    }
+
   while (1)
   {
     // wait for an interrupt

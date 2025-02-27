@@ -1,5 +1,5 @@
 build/sam_e51_cnano_123/production/_ext/1360937237/worker.o: \
- ../src/worker.c ../src/utils.h ../src/config/sam_e51_cnano/definitions.h \
+ ../src/worker.c ../src/config/sam_e51_cnano/definitions.h \
  ../src/config/sam_e51_cnano/peripheral/nvmctrl/plib_nvmctrl.h \
  ../src/config/sam_e51_cnano/device.h \
  ../src/packs/ATSAME51J20A_DFP/same51j20a.h \
@@ -114,9 +114,7 @@ build/sam_e51_cnano_123/production/_ext/1360937237/worker.o: \
  ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.h \
  ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom_usart_common.h \
  ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.h \
- ../src/click_routines/usb_uart/usb_uart.h
-
-../src/utils.h:
+ ../src/click_routines/usb_uart/usb_uart.h ../src/utils.h
 
 ../src/config/sam_e51_cnano/definitions.h:
 
@@ -349,3 +347,5 @@ build/sam_e51_cnano_123/production/_ext/1360937237/worker.o: \
 ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.h:
 
 ../src/click_routines/usb_uart/usb_uart.h:
+
+../src/utils.h:

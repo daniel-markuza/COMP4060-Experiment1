@@ -1,55 +1,173 @@
-#include "utils.h"
-#include "stdio.h"
-#include "string.h"
-#include "definitions.h"
+/*******************************************************************************
+  USB UART click routine example source file
+
+  Company
+    Microchip Technology Inc.
+
+  File Name
+    usb_uart_example.c
+
+  Summary
+    USB UART click routine example implementation file.
+
+  Description
+    This file defines the usage of the USB UART click routine APIs.
+
+  Remarks:
+    None.
+
+ *******************************************************************************/
+
+// DOM-IGNORE-BEGIN
+/*
+    (c) 2021 Microchip Technology Inc. and its subsidiaries. You may use this
+    software and any derivatives exclusively with Microchip products.
+
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+    WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+    PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+    WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+    BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+    FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+    ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+    THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+
+    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+    TERMS.
+*/
+// DOM-IGNORE-END
+
+/**
+  Section: Included Files
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+#include "definitions.h" // SYS function prototypes
 #include "click_routines/usb_uart/usb_uart.h"
+#include <xc.h>
+#include "utils.h"
+// setup our heartbeat to be 1ms: we overflow at 1ms intervals with a 48MHz clock
+// uses the SysTicks unit so that we get reliable debugging (timer stops on breakpoints)
+// this is a countdown timer that sends an interrupt when 0
+#define MS_TICKS 48000UL
 
-// Commands
-uint8_t valid_message_ucast[] = "AT+UCAST:0000=hi\r";
-uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
-uint8_t valid_message_rdatab[] = "hi\r";
-int ucast_flag = 0;
+// number of millisecond between LED flashes
+#define LED_FLASH_MS 1000UL
+#define PATTERN_LENGTH 14 // Length of "RAW:-xxx,hi\r\n"
 
-uint8_t messageBuffer[100]; // Buffer for received messages
 
-// Main worker function
+//// NOTE: this overflows every ~50 days, so I'm not going to care here...
+// volatile uint32_t msCount = 0;
+
+/**
+  Section: Example Code
+ */
+// AT+SENDMCAST:01,FFFF,01,01,C091,0002,Test
+// AT+RDATAB:XX then data of size XX
+
+//
+// uint8_t restart[] = "ATZ\r";
+//
+// uint8_t join_own_network[] = "AT+EN\r";
+// uint8_t change_channel[] = "AT+CCHANGE:10\r"; // that's 10 hex! channels go from 11-26, aka 0B to 1A
+
+char out_string[200];
+
+//// Fires every 1ms
+// void SysTick_Handler()
+//{
+//   msCount++;
+// }
+
 void worker_main(void)
 {
-	systemInitialize();
 
-	// Disassociate device
-	//    sendCommandAndReadResponse(disassociate, "Disassociated from previous network", messageBuffer, sizeof(messageBuffer));
+  systemInitialize();
 
-	// Restart device
-	sendCommandAndReadResponse(restart, "Restarted", messageBuffer, sizeof(messageBuffer));
+  uint8_t read_chars[100];
+  uint8_t buffer[10];
 
-	// Join own network
-	sendCommandAndReadResponse(join_own_network, "Joined own network", messageBuffer, sizeof(messageBuffer));
+  usb_uart_USART_Write(restart, 4);
+  while (usb_uart_USART_WriteIsBusy())
+    ;
+  // need to wait for an "OK" to come through
+  usb_uart_USART_Read((uint8_t *)&read_chars, 2);
+  while (usb_uart_USART_ReadIsBusy())
+    ; // do nothing
 
-	// Change channel
-	sendCommandAndReadResponse(change_channel, "channel changed", messageBuffer, sizeof(messageBuffer));
+  usb_uart_USART_Write(join_own_network, 6);
+  while (usb_uart_USART_WriteIsBusy())
+    ;
+  // need to wait for an "OK" to come through
+  usb_uart_USART_Read((uint8_t *)&read_chars, 2);
+  while (usb_uart_USART_ReadIsBusy())
+    ; // do nothing
 
-	// Join existing network
-	//    sendCommandAndReadResponse(join_existing_network, "Joined existing network", messageBuffer, sizeof(messageBuffer));
+  usb_uart_USART_Write(change_channel, 14);
+  while (usb_uart_USART_WriteIsBusy())
+    ;
+  // need to wait for an "OK" to come through
+  usb_uart_USART_Read((uint8_t *)&read_chars, 2);
+  while (usb_uart_USART_ReadIsBusy())
+    ; // do nothing
 
-	uint32_t lastSendTime = getMsCount(); // Track last send time
+  // preload loop
+  // start reading
+  usb_uart_USART_Read((uint8_t *)&read_chars, 1);
+  printf("Let's go\n");
 
-	int i = 2000;
-	while (i > 0)
-	{
+  uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
+  uint8_t valid_message_rdatab[] = "hi\r";
+  int i = 50;
+  while (i > 0)
+  {
+    if ((getMsCount() % 350UL) == 0)
+    {
+      usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
+      while (usb_uart_USART_WriteIsBusy())
+        ;
 
-		if ((getMsCount() - lastSendTime) >= 500) // Ensure precise 50ms timing
-		{
-			usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
-			while (usb_uart_USART_WriteIsBusy())
-				;
+      usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
+      while (usb_uart_USART_WriteIsBusy())
+        ;
 
-			usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
-			while (usb_uart_USART_WriteIsBusy())
-				;
+      printf("Sent message %d\r\n", i--);
+    }
+  }
+ 
+  while (1)
+  {
+    // wait for an interrupt
+    __WFI();
 
-			printf("Sent message %d\r\n", i--);
-			lastSendTime = getMsCount(); // Reset send time
-		}
-	}
+    if (!usb_uart_USART_ReadIsBusy())
+    {
+      sprintf(out_string, "%c", read_chars[0]);
+      // usb_uart_USART_Write((uint8_t *)out_string,sizeof(out_string));
+      printf(out_string);
+
+      // read the next one
+      usb_uart_USART_Read((uint8_t *)&read_chars, 1);
+    }
+    SERCOM5_USART_Read(&buffer, 10, true);
+    if (buffer[0] != '\0')
+    {
+      // printf((char*)&buffer); // comment this out if your serial program does a local echo.
+      //  send the string to the zigbee one char at a time
+      for (int i = 0; i < 10 && buffer[i] != '\0'; i++)
+      {
+        usb_uart_USART_Write((uint8_t *)&buffer[i], 1);
+      }
+    }
+
+    // handle blinking the light
+    handleLEDBlink();
+  }
 }
