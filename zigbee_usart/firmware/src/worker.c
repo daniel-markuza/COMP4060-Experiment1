@@ -24,7 +24,7 @@ void worker_main(void)
 	sendCommandAndReadResponse(restart, "Restarted", messageBuffer, sizeof(messageBuffer));
 
 	// Join own network
-	sendCommandAndReadResponse(join_own_network, "Joined own network", messageBuffer, sizeof(messageBuffer));
+	//sendCommandAndReadResponse(join_own_network, "Joined own network", messageBuffer, sizeof(messageBuffer));
 
 	// Change channel
 	sendCommandAndReadResponse(change_channel, "channel changed", messageBuffer, sizeof(messageBuffer));
@@ -34,11 +34,12 @@ void worker_main(void)
 
 	uint32_t lastSendTime = getMsCount(); // Track last send time
 
-	int i = 2000;
+	int i = 15;
+    printf("%d", i);
 	while (i > 0)
 	{
 
-		if ((getMsCount() - lastSendTime) >= 500) // Ensure precise 50ms timing
+		if ((getMsCount() - lastSendTime) >= 1000) // Ensure precise 50ms timing
 		{
 			usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
 			while (usb_uart_USART_WriteIsBusy())
