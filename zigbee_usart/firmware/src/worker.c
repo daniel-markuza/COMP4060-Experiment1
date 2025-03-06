@@ -3,12 +3,18 @@
 #include "string.h"
 #include "definitions.h"
 #include "click_routines/usb_uart/usb_uart.h"
+#include <time.h>
+
 
 // Commands
 uint8_t valid_message_ucast[] = "AT+UCAST:0000=hi\r";
 uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
 uint8_t valid_message_rdatab[] = "hi\r";
-int ucast_flag=0;
+uint8_t voltage_check[] = "ats3d?\r";
+
+time_t t;
+struct tm *tm_info;
+
 
 uint8_t messageBuffer[100]; // Buffer for received messages
 
@@ -28,31 +34,12 @@ void worker_main(void)
 
     uint32_t lastSendTime = getMsCount(); // Track last send time
 
-    int i=1000;
-    if(ucast_flag==1)
-    {
-      while (i > 0)
+    int i = 0;
+    while (1)
       {
         	__WFI(); // Wait for interrupt (SysTick will update msCount)
 
-        	if ((getMsCount() - lastSendTime) >= 150) // Ensure precise 50ms timing
-        	{
-            	usb_uart_USART_Write(valid_message_ucast,17);
-        		while(usb_uart_USART_WriteIsBusy())
-          			;
-
-            	printf("Sent message %d\r\n", i--);
-            	lastSendTime = getMsCount(); // Reset send time
-        	}
-      }
-    }
-    else
-    {
-      while (i > 0)
-      {
-        	__WFI(); // Wait for interrupt (SysTick will update msCount)
-
-        	if ((getMsCount() - lastSendTime) >= 150) // Ensure precise 50ms timing
+        	if ((getMsCount() - lastSendTime) >= 10) // Ensure precise 50ms timing
         	{
             	usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
             	while (usb_uart_USART_WriteIsBusy())
@@ -62,9 +49,19 @@ void worker_main(void)
             	while (usb_uart_USART_WriteIsBusy())
                 	;
 
-            	printf("Sent message %d\r\n", i--);
+            	printf("Sent message %d\r\n", i++);
+                sendCommandAndReadResponse(voltage_check, "Checking Voltage", messageBuffer, sizeof(messageBuffer));
             	lastSendTime = getMsCount(); // Reset send time
+                
+                
+                // Get the current time
+                time(&t);
+    
+                // Convert it to local time format
+                tm_info = localtime(&t);
+
+                // Print the time in a readable format
+                printf("Current Time: %s", asctime(tm_info));
         	}
       }
-    }
 }
