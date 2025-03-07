@@ -3,14 +3,21 @@
 #include "string.h"
 #include "definitions.h"
 #include "click_routines/usb_uart/usb_uart.h"
-#include <time.h>
 
+#define MS_TICKS 48000UL
+
+// number of millisecond between LED flashes
+#define HEARTBEAT    60000UL
 
 // Commands
-uint8_t valid_message_ucast[] = "AT+UCAST:0000=hi\r";
+uint8_t set_power_mode_3[] = "ATS39=0000\r"; // Set power mode to 3 (sleep)
+uint8_t wakeup_command[] = "+++\r";          // Command to wake up
+uint8_t listen_command[] = "AT+POLL\r";      // Command to listen for messages
 uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
 uint8_t valid_message_rdatab[] = "hi\r";
-uint8_t voltage_check[] = "ats3d?\r";
+uint8_t check_voltage[] = "ats3d?\r";
+char out_string[200];
+
 
 time_t t;
 struct tm *tm_info;
@@ -23,45 +30,87 @@ void worker_main(void)
 {
     systemInitialize();
 
-    // Disassociate device
-    sendCommandAndReadResponse(disassociate, "Disassociated from previous network", messageBuffer, sizeof(messageBuffer));
+  uint8_t read_chars[100];
+  uint8_t buffer[10];
 
-    // Restart device
-    sendCommandAndReadResponse(restart, "Restarted", messageBuffer, sizeof(messageBuffer));
+  // Restart the module
+  usb_uart_USART_Write(restart, strlen((char *)restart));
+  while (usb_uart_USART_WriteIsBusy())
+    ;
 
-    // Join existing network
-    sendCommandAndReadResponse(join_existing_network, "Joined existing network", messageBuffer, sizeof(messageBuffer));
+  //  usb_uart_USART_Read((uint8_t *)&read_chars, 2);
+  //  while (usb_uart_USART_ReadIsBusy())
+  //    ;
+  memset(read_chars, '\0', sizeof(read_chars));
+  readAllBytesWithTimeout((uint8_t *)&read_chars, sizeof(read_chars));
 
-    uint32_t lastSendTime = getMsCount(); // Track last send time
+  // Join the network
+  usb_uart_USART_Write(join_own_network, strlen((char *)join_own_network));
+  while (usb_uart_USART_WriteIsBusy())
+    ;
 
-    int i = 0;
-    while (1)
-      {
-        	__WFI(); // Wait for interrupt (SysTick will update msCount)
+  memset(read_chars, '\0', sizeof(read_chars));
+  readAllBytesWithTimeout((uint8_t *)&read_chars, sizeof(read_chars));
 
-        	if ((getMsCount() - lastSendTime) >= 10) // Ensure precise 50ms timing
-        	{
-            	usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
-            	while (usb_uart_USART_WriteIsBusy())
-                	;
+  // Change to a specific channel
+  usb_uart_USART_Write(change_channel, strlen((char *)change_channel));
+  while (usb_uart_USART_WriteIsBusy())
+    ;
 
-             	usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
-            	while (usb_uart_USART_WriteIsBusy())
-                	;
+  memset(read_chars, '\0', sizeof(read_chars));
+  readAllBytesWithTimeout((uint8_t *)&read_chars, sizeof(read_chars));
 
-            	printf("Sent message %d\r\n", i++);
-                sendCommandAndReadResponse(voltage_check, "Checking Voltage", messageBuffer, sizeof(messageBuffer));
-            	lastSendTime = getMsCount(); // Reset send time
-                
-                
-                // Get the current time
-                time(&t);
-    
-                // Convert it to local time format
-                tm_info = localtime(&t);
+  printf("Let's go\r\n");
 
-                // Print the time in a readable format
-                printf("Current Time: %s", asctime(tm_info));
-        	}
-      }
+    printf("%s", "here");
+    int i = 10;
+    printf("%d", i);
+    uint32_t startTime = getMsCount();
+    uint32_t elapsedTime = getMsCount();
+
+    while(1)
+    {
+        // wait for an interrupt
+        __WFI();
+
+
+        if (!usb_uart_USART_ReadIsBusy()){
+            sprintf(out_string,"%c", read_chars[0]);
+            //usb_uart_USART_Write((uint8_t *)out_string,sizeof(out_string));
+            printf(out_string);
+
+            // read the next one
+            usb_uart_USART_Read((uint8_t *)&read_chars,1);
+        }
+        SERCOM5_USART_Read(&buffer, 10, true);
+        if(buffer[0] != '\0'){
+            //printf((char*)&buffer); // comment this out if your serial program does a local echo.
+            // send the string to the zigbee one char at a time
+            for(int i = 0; i < 10 && buffer[i] != '\0'; i++){
+                usb_uart_USART_Write((uint8_t*)&buffer[i],1);
+            }
+        }
+
+        // handle blinking the light
+        if ((getMsCount() % HEARTBEAT) == 0)
+        {
+          usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
+          while (usb_uart_USART_WriteIsBusy())
+              ;
+
+          usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
+          while (usb_uart_USART_WriteIsBusy())
+                ;
+
+          printf("Sent heartbeat message\r\n");
+          // Check battery voltage
+          usb_uart_USART_Write(check_voltage, strlen((char *)check_voltage));
+          while (usb_uart_USART_WriteIsBusy())
+             ;
+          printf("Checking voltage\r\n");
+          elapsedTime = (getMsCount()-startTime)/60000 + 1;
+
+          printf("Time elapsed since start (minutes): %ld \r\n", elapsedTime);
+        }
+    }
 }
