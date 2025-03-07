@@ -3,17 +3,29 @@
 #include "string.h"
 #include "definitions.h"
 #include "click_routines/usb_uart/usb_uart.h"
+#include <ctype.h>
+
+void extract_number_from_read_chars(char *src, char *dest, size_t dest_size) {
+    size_t j = 0;
+    for (size_t i = 0; src[i] != '\0' && j < dest_size - 1; i++) {
+        if (isdigit(src[i])) { // Only copy numeric characters
+            dest[j++] = src[i];
+        }
+    }
+    dest[j] = '\0'; // Null terminate the cleaned string
+}
+
 
 #define MS_TICKS 48000UL
 
 // number of millisecond between LED flashes
-#define HEARTBEAT    60000UL
+#define HEARTBEAT    5000UL
 
 // Commands
 uint8_t set_power_mode_3[] = "ATS39=0000\r"; // Set power mode to 3 (sleep)
 uint8_t wakeup_command[] = "+++\r";          // Command to wake up
 uint8_t listen_command[] = "AT+POLL\r";      // Command to listen for messages
-uint8_t valid_command_rdatab[] = "AT+RDATAB:02\r";
+uint8_t valid_command_rdatab[] = "AT+RDATAB:";
 uint8_t valid_message_rdatab[] = "hi\r";
 uint8_t check_voltage[] = "ats3d?\r";
 char out_string[200];
@@ -62,9 +74,6 @@ void worker_main(void)
 
   printf("Let's go\r\n");
 
-    printf("%s", "here");
-    int i = 10;
-    printf("%d", i);
     uint32_t startTime = getMsCount();
     uint32_t elapsedTime = getMsCount();
 
@@ -94,21 +103,60 @@ void worker_main(void)
         // handle blinking the light
         if ((getMsCount() % HEARTBEAT) == 0)
         {
-          usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
-          while (usb_uart_USART_WriteIsBusy())
-              ;
-
-          usb_uart_USART_Write(valid_message_rdatab, strlen((char *)valid_message_rdatab));
-          while (usb_uart_USART_WriteIsBusy())
-                ;
-
-          printf("Sent heartbeat message\r\n");
+          memset(read_chars, '\0', sizeof(read_chars));
           // Check battery voltage
           usb_uart_USART_Write(check_voltage, strlen((char *)check_voltage));
           while (usb_uart_USART_WriteIsBusy())
              ;
           printf("Checking voltage\r\n");
+          //This replys with "OK" instead of actual value randomly, might be related to issue?
+          memset(read_chars, '\0', sizeof(read_chars));
+          readAllBytesWithTimeout((uint8_t *)&read_chars, sizeof(read_chars));
+          printf("%s", read_chars);
           elapsedTime = (getMsCount()-startTime)/60000 + 1;
+
+            char formattedTime[6];
+            sprintf(formattedTime, "%04lu", elapsedTime);  // Format elapsed time with leading zeros
+
+            //char space[] = ", ";
+            uint8_t messageBuffer[200];  // Buffer for final message
+            memset(messageBuffer, '\0', sizeof(messageBuffer));
+
+            char extracted_number[20];  // Buffer for extracted number
+    memset(extracted_number, 0, sizeof(extracted_number));
+
+    extract_number_from_read_chars((char *)read_chars, extracted_number, sizeof(extracted_number));
+
+    snprintf((char *)messageBuffer, sizeof(messageBuffer), "%s, %s", formattedTime, extracted_number);
+
+
+
+            char sizeStr[10];
+            sprintf(sizeStr, "%02zu", strlen((char *)messageBuffer));
+            strcat((char *)messageBuffer, "\r");
+
+            uint8_t finalCommand[100];
+            memset(finalCommand, 0, sizeof(finalCommand));
+
+            strcpy((char *)finalCommand, "AT+RDATAB:");
+            strcat((char *)finalCommand, sizeStr);  // Append message size
+            strcat((char *)finalCommand, "\r");    // Append carriage return
+
+            printf("Final Command: %s\n", finalCommand);
+            printf("Concatenated Message: %s\n", messageBuffer);
+
+          printf("%d", strlen((char *)messageBuffer));
+
+          usb_uart_USART_Write(finalCommand, strlen((char *)finalCommand));
+          while (usb_uart_USART_WriteIsBusy())
+              ;
+
+          usb_uart_USART_Write(messageBuffer, strlen((char *)messageBuffer));
+          while (usb_uart_USART_WriteIsBusy())
+                ;
+
+          printf("Sent heartbeat message\r\n");
+
 
           printf("Time elapsed since start (minutes): %ld \r\n", elapsedTime);
         }
