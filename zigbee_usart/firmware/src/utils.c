@@ -102,12 +102,13 @@ void sendCommandAndReadResponse(uint8_t *command, const char *description, uint8
 {
     memset(readBuffer, '\0', bufferSize);
     usb_uart_USART_Write(command, strlen((char *)command));
-    delayMs(200);
+        delayMs(50);
     while (usb_uart_USART_WriteIsBusy())
         ;
     readAllBytesWithTimeout(readBuffer, bufferSize);
-    delayMs(200);
+        delayMs(50);
     printf("%s:\r\n%s\r\n", description, readBuffer);
+    delayMs(50);
 }
 
 // Blink the LED
