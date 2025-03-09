@@ -8,16 +8,10 @@
 #include <xc.h>
 #include "utils.h"
 
-// Define the AT commands
-uint8_t set_power_mode_3[] = "ATS39=0003\r";       // Set power mode to 3 (sleep)
-uint8_t wakeup_command[] = "+++\r";                // Command to wake up
-uint8_t check_voltage[] = "ATS3D?\r";              // Check battery voltage
-uint8_t valid_command_rdatab[] = "AT+RDATAB:11\r"; // 11 hex -> 17 decimal bytes: 10 for timestamp, 4 for voltage, 3 for formatting
-uint8_t readChars[100];
-
-void worker_main(void)
+void worker_1_main(void)
 {
   systemInitialize();
+  uint8_t readChars[100];
 
   // Restart the module
   sendCommandAndReadResponse(restart, "restart device", readChars, sizeof(readChars));
@@ -34,11 +28,8 @@ void worker_main(void)
   // Send start message with initial timestamp
   uint32_t startTime = getMsCount();
 
-  sprintf((char *)messageToSend, "START:%010lu\r", startTime);
+  sprintf((char *)messageToSend, "1_START:%010lu\r", startTime);
   sendCommandAndReadResponse(valid_command_rdatab, "Start rdatab command", readChars, sizeof(readChars));
-  // usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
-  // while (usb_uart_USART_WriteIsBusy())
-  //   ;
   sendCommandAndReadResponse(messageToSend, "Write raw message", readChars, sizeof(readChars));
 
   printf("Sent start timestamp: %s\r\n", messageToSend);
@@ -46,7 +37,8 @@ void worker_main(void)
   // Main loop: Wake, measure, send, sleep
   while (1)
   {
-    sendCommandAndReadResponse(wakeup_command, "Wake device up", readChars, sizeof(readChars));
+    sendCommandAndReadResponse(enter_command_mode, "Wake device up in command mode", readChars, sizeof(readChars));
+    delayMs(1000); // Mode switch delay
 
     printf("Awake and checking battery voltage...\r\n");
 
@@ -85,17 +77,13 @@ void worker_main(void)
 
     // Prepare and send the raw message with voltage and timestamp
     uint32_t currentTime = getMsCount();
-    sprintf((char *)messageToSend, "T%010luV%s\r", currentTime, voltage);
+    sprintf((char *)messageToSend, "1_T%010luV%s\r", currentTime, voltage);
     sendCommandAndReadResponse(valid_command_rdatab, "Start rdatab command", readChars, sizeof(readChars));
-    // usb_uart_USART_Write(valid_command_rdatab, strlen((char *)valid_command_rdatab));
-    // while (usb_uart_USART_WriteIsBusy())
-    //   ;
-    // delayMs(5);
     sendCommandAndReadResponse(messageToSend, "Write raw message", readChars, sizeof(readChars));
 
     printf("Sent voltage message: %s\r\n", messageToSend);
 
-    // Set power mode back to sleep (mode 3)
+    // Set power mode back to sleep(mode 3)
     sendCommandAndReadResponse(set_power_mode_3, "Sleep device", readChars, sizeof(readChars));
 
     delayMs(60000); // Sleep for 60 seconds

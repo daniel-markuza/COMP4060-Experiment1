@@ -20,6 +20,11 @@ char out_string[200];
 uint8_t io_buffer[10];
 uint8_t io_read_chars[100];
 
+uint8_t set_power_mode_3[] = "ATS39=0003\r";       // Set power mode to 3 (sleep)
+uint8_t enter_command_mode[] = "+++\r";            // Command to wake up
+uint8_t check_voltage[] = "ATS3D?\r";              // Check battery voltage
+uint8_t valid_command_rdatab[] = "AT+RDATAB:13\r"; // 11 hex -> 19 decimal bytes: 10 for timestamp, 4 for voltage, 3 for formatting
+
 // SysTick Handler for 1ms timer
 void SysTick_Handler()
 {
@@ -102,11 +107,11 @@ void sendCommandAndReadResponse(uint8_t *command, const char *description, uint8
 {
     memset(readBuffer, '\0', bufferSize);
     usb_uart_USART_Write(command, strlen((char *)command));
-        delayMs(50);
+    delayMs(50);
     while (usb_uart_USART_WriteIsBusy())
         ;
     readAllBytesWithTimeout(readBuffer, bufferSize);
-        delayMs(50);
+    delayMs(50);
     printf("%s:\r\n%s\r\n", description, readBuffer);
     delayMs(50);
 }

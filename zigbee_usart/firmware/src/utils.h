@@ -18,6 +18,11 @@ extern uint8_t disassociate[];
 extern uint8_t change_channel[];
 extern uint8_t network_info[];
 
+extern uint8_t set_power_mode_3[];     // Set power mode to 3 (sleep)
+extern uint8_t enter_command_mode[];   // Command to wake up
+extern uint8_t check_voltage[];        // Check battery voltage
+extern uint8_t valid_command_rdatab[]; // 11 hex -> 19 decimal bytes: 10 for timestamp, 4 for voltage, 3 for formatting
+
 // Function declarations
 void delayMs(uint32_t milliseconds);
 size_t readAllBytesWithTimeout(uint8_t *buffer, size_t maxBufferSize);

@@ -42,9 +42,9 @@
 */
 // DOM-IGNORE-END
 
-#ifndef _WORKER_H
-#define _WORKER_H
+#ifndef _WORKER_2_H
+#define _WORKER_2_H
 
-void worker_main(void);
+void worker_2_main(void);
 
-#endif // _WORKER_H
+#endif // _WORKER_2_H

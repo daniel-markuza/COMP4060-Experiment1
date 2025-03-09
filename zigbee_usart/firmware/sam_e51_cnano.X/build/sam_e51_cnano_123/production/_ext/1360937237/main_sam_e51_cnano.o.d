@@ -114,7 +114,7 @@ build/sam_e51_cnano_123/production/_ext/1360937237/main_sam_e51_cnano.o: \
  ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom5_usart.h \
  ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom_usart_common.h \
  ../src/config/sam_e51_cnano/peripheral/sercom/usart/plib_sercom4_usart.h \
- ../src/coordinator.h ../src/worker.h \
+ ../src/coordinator.h ../src/worker_1.h ../src/worker_2.h \
  ../src/click_routines/usb_uart/usb_uart_example.h
 
 ../src/config/sam_e51_cnano/definitions.h:
@@ -349,6 +349,8 @@ build/sam_e51_cnano_123/production/_ext/1360937237/main_sam_e51_cnano.o: \
 
 ../src/coordinator.h:
 
-../src/worker.h:
+../src/worker_1.h:
+
+../src/worker_2.h:
 
 ../src/click_routines/usb_uart/usb_uart_example.h:
