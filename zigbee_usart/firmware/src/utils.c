@@ -11,19 +11,18 @@ volatile uint32_t msCount = 0;
 // Commands
 uint8_t restart[] = "ATZ\r";
 uint8_t join_own_network[] = "AT+EN\r";
-// uint8_t join_existing_network[] = "AT+JPAN:20,4ED7\r";
 uint8_t join_existing_network[] = "AT+JPAN:20,2EAD\r";
 uint8_t network_info[] = "AT+N?\r";
 uint8_t disassociate[] = "AT+DASSL\r";
 uint8_t change_channel[] = "AT+CCHANGE:14\r";
-char out_string[200];
-uint8_t io_buffer[10];
-uint8_t io_read_chars[100];
-
 uint8_t set_power_mode_3[] = "ATS39=0003\r";       // Set power mode to 3 (sleep)
 uint8_t enter_command_mode[] = "+++\r";            // Command to wake up
 uint8_t check_voltage[] = "ATS3D?\r";              // Check battery voltage
-uint8_t valid_command_rdatab[] = "AT+RDATAB:13\r"; // 11 hex -> 19 decimal bytes: 10 for timestamp, 4 for voltage, 3 for formatting
+uint8_t valid_command_rdatab[] = "AT+RDATAB:13\r"; // 13 hex -> 19 decimal bytes: 10 for timestamp, 4 for voltage, 5 for formatting
+
+char out_string[200];
+uint8_t io_buffer[10];
+uint8_t io_read_chars[100];
 
 // SysTick Handler for 1ms timer
 void SysTick_Handler()
@@ -103,17 +102,31 @@ size_t readAllBytesWithTimeout(uint8_t *buffer, size_t maxBufferSize)
 }
 
 // Send a command and read the response
-void sendCommandAndReadResponse(uint8_t *command, const char *description, uint8_t *readBuffer, size_t bufferSize)
+bool sendCommandAndReadResponse(uint8_t *command, const char *description, uint8_t *readBuffer, size_t bufferSize)
 {
-    memset(readBuffer, '\0', bufferSize);
+    uint32_t startTime = getMsCount();
+
     usb_uart_USART_Write(command, strlen((char *)command));
-    delayMs(50);
     while (usb_uart_USART_WriteIsBusy())
-        ;
+    {
+        if ((getMsCount() - startTime) > COMMAND_TIMEOUT_MS)
+        {
+            printf("Error: Timeout while sending command: %s\r\n", description);
+            return false;
+        }
+    }
+
+    memset(readBuffer, '\0', bufferSize);
+    startTime = getMsCount(); // Reset for read timeout
     readAllBytesWithTimeout(readBuffer, bufferSize);
-    delayMs(50);
-    printf("%s:\r\n%s\r\n", description, readBuffer);
-    delayMs(50);
+    if ((getMsCount() - startTime) > COMMAND_TIMEOUT_MS)
+    {
+        printf("Error: Timeout while reading response for: %s\r\n", description);
+        return false;
+    }
+
+    printf("%s: %s\r\n", description, readBuffer);
+    return true;
 }
 
 // Blink the LED

@@ -3,11 +3,14 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 // Constants
 #define MS_TICKS 48000UL
 #define TIMEOUT_MS 500UL
 #define LED_FLASH_MS 1000UL
+#define SLEEP_INTERVAL_MS 1000
+#define COMMAND_TIMEOUT_MS 5000
 
 // Common Commands
 //  Declare but do not define global variables
@@ -26,7 +29,7 @@ extern uint8_t valid_command_rdatab[]; // 11 hex -> 19 decimal bytes: 10 for tim
 // Function declarations
 void delayMs(uint32_t milliseconds);
 size_t readAllBytesWithTimeout(uint8_t *buffer, size_t maxBufferSize);
-void sendCommandAndReadResponse(uint8_t *command, const char *description, uint8_t *readBuffer, size_t bufferSize);
+bool sendCommandAndReadResponse(uint8_t *command, const char *description, uint8_t *readBuffer, size_t bufferSize);
 void handleLEDBlink();
 void systemInitialize();
 void SysTick_Handler(); // Declare SysTick handler
